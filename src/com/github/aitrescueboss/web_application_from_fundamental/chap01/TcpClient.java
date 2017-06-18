@@ -10,7 +10,7 @@ import java.net.Socket;
 public class TcpClient {
 
     private static final String HOST = "localhost";
-    private static final int PORT_TO_HOST = 8001;
+    private static final int PORT_TO_HOST = 8080;
     private static final String CONTENT_FOR_SERVER = "client_send.txt";
     private static final String DESTINATION_OF_RECEIVE = "client_recv.txt";
 

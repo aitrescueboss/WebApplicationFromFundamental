@@ -15,15 +15,15 @@ public class TcpServer {
 
     public static void main(String[] args) {
 
-        try (ServerSocket mServer = new ServerSocket(SERVER_SOCKET_PORT);
-            FileOutputStream mOutputStreamFromClient = new FileOutputStream(DESTINATION_OF_OUTPUT_FROM_CLIENT);
-            FileInputStream mInputStreamToClient = new FileInputStream(SOURCE_OF_INPUT_TO_CLIENT);
+        try (ServerSocket tServer = new ServerSocket(SERVER_SOCKET_PORT);
+            FileOutputStream tOutputStreamFromClient = new FileOutputStream(DESTINATION_OF_OUTPUT_FROM_CLIENT);
+            FileInputStream tInputStreamToClient = new FileInputStream(SOURCE_OF_INPUT_TO_CLIENT);
         ) {
             //===========================================================================
             // Starting.
             //===========================================================================
             System.out.println("クライアントからの接続を待ちます...");
-            Socket mSocket = mServer.accept(); //クライアントからの接続があると, mSocketにクライアントとの通信用ソケットが入る.
+            Socket mSocket = tServer.accept(); //クライアントからの接続があると, mSocketにクライアントとの通信用ソケットが入る.
             System.out.println("クライアントからの接続が有りました．");
 
             //===========================================================================
@@ -35,7 +35,7 @@ public class TcpServer {
             while((ch = mInputStreamFromClient.read()) != 0) {
                 // クライアントは, 終了の印として0を送ってくるので
                 // 受信が終了するまで繰り返し.
-                mOutputStreamFromClient.write(ch);
+                tOutputStreamFromClient.write( ch );
             }
 
             //===========================================================================
@@ -43,7 +43,7 @@ public class TcpServer {
             // クライアントにファイルの中身を送信する.
             //===========================================================================
             OutputStream mOutputStreamToClient = mSocket.getOutputStream();
-            while((ch = mInputStreamToClient.read()) != -1) {
+            while((ch = tInputStreamToClient.read()) != -1) {
                 mOutputStreamToClient.write(ch);
             }
 
