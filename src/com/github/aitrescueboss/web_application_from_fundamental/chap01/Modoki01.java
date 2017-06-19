@@ -14,7 +14,7 @@ import java.util.TimeZone;
 
 public class Modoki01 {
 
-    private static final String DOCUMENT_ROOT = "/Users/boss/";
+    private static final String DOCUMENT_ROOT = "/Users/boss";
 
     private static String readLine(InputStream aInput) throws Exception {
         int tReadChar;
@@ -87,6 +87,13 @@ public class Modoki01 {
             writeLine(tOutputToClient, "Server: Modoki/0.1");
             writeLine(tOutputToClient, "Connection: close");
             writeLine(tOutputToClient, "Content-type: text/html");
+
+            writeLine(System.out, "------------------------");
+            writeLine(System.out, "HTTP/1.1 200 OK");
+            writeLine(System.out, "Date: " + getDateStringUTC());
+            writeLine(System.out, "Server: Modoki/0.1");
+            writeLine(System.out, "Connection: close");
+            writeLine(System.out, "Content-type: text/html");
 
             //========================================================
             // レスポンスボディを返す.
